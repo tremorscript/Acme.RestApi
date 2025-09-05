@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <Sdk Name="Microsoft.Build.CentralPackageVersions" Version="2.1.3" />
+
+    <PropertyGroup>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+    </PropertyGroup>
+  
+  <ItemGroup>
+    <PackageReference Include="Ardalis.GuardClauses" />
+    <PackageReference Include="Ardalis.Result" />
+    <PackageReference Include="Ardalis.SmartEnum" />
+    <PackageReference Include="Ardalis.Specification" />
+    <PackageReference Include="MediatR" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" />
+    <PackageReference Include="NimblePros.SharedKernel" />
+    <PackageReference Include="Vogen" />
+  </ItemGroup>
+  
+  <ItemGroup>
+    <Folder Include="ContributorAggregate\Handlers\" />
+    <Folder Include="ContributorAggregate\Specifications\" />
+  </ItemGroup>
+  
+</Project>
