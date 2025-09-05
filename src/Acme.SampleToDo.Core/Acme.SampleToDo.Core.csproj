@@ -19,7 +19,6 @@
   
   <ItemGroup>
     <Folder Include="ContributorAggregate\Handlers\" />
-    <Folder Include="ContributorAggregate\Specifications\" />
   </ItemGroup>
   
 </Project>
