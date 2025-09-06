@@ -2,10 +2,11 @@
 
 namespace Acme.Sample.ToDo.UseCases.Projects.Create;
 
-public class CreateProjectHandler(IRepository<Project> repository) : ICommandHandler<CreateProjectCommand, Result<ProjectId>>
+public class CreateProjectHandler(IRepository<Project> repository)
+  : ICommandHandler<CreateProjectCommand, Result<ProjectId>>
 {
   private readonly IRepository<Project> _repository = repository;
-  
+
   public async Task<Result<ProjectId>> Handle(CreateProjectCommand request,
     CancellationToken cancellationToken)
   {

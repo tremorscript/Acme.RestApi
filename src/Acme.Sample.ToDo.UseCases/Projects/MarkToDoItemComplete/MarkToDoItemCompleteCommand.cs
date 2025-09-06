@@ -3,7 +3,8 @@
 namespace Acme.Sample.ToDo.UseCases.Projects.MarkToDoItemComplete;
 
 /// <summary>
-/// Create a new Project.
+/// Create a new Project
 /// </summary>
-/// <param name="Name"></param>
-public record MarkToDoItemCompleteCommand(ProjectId ProjectId, int ToDoItemId) : Ardalis.SharedKernel.ICommand<Result>;
+/// <param name="ProjectId"></param>
+/// <param name="ToDoItemId"></param>
+public record MarkToDoItemCompleteCommand(ProjectId ProjectId, int ToDoItemId) : ICommand<Result>;

@@ -1,6 +1,8 @@
 ﻿namespace Acme.Sample.ToDo.UseCases.Projects.ListIncompleteItems;
 
-public class ListIncompleteItemsByProjectHandler : IQueryHandler<ListIncompleteItemsByProjectQuery, Result<IEnumerable<ToDoItemDTO>>>
+public class
+  ListIncompleteItemsByProjectHandler : IQueryHandler<ListIncompleteItemsByProjectQuery,
+  Result<IEnumerable<ToDoItemDTO>>>
 {
   private readonly IListIncompleteItemsQueryService _query;
 

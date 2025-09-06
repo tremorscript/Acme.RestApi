@@ -2,4 +2,4 @@
 
 namespace Acme.Sample.ToDo.UseCases.Projects.Create;
 
-public record CreateProjectCommand(string Name): ICommand<Result<ProjectId>>;
+public record CreateProjectCommand(string Name) : ICommand<Result<ProjectId>>;

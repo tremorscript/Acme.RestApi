@@ -19,10 +19,11 @@ public class UpdateProjectHandler : ICommandHandler<UpdateProjectCommand, Result
       return Result.NotFound();
     }
 
-    existingEntity.UpdateName(request.NewName!);
+    existingEntity.UpdateName(request.NewName);
 
     await _repository.UpdateAsync(existingEntity, cancellationToken);
 
-    return Result.Success(new ProjectDTO(existingEntity.Id.Value, existingEntity.Name.Value, existingEntity.Status.ToString()));
+    return Result.Success(new ProjectDTO(existingEntity.Id.Value, existingEntity.Name.Value,
+      existingEntity.Status.ToString()));
   }
 }

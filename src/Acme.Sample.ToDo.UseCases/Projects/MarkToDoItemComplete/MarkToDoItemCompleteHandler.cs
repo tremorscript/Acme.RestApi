@@ -17,13 +17,19 @@ public class MarkToDoItemCompleteHandler : ICommandHandler<MarkToDoItemCompleteC
   {
     var spec = new ProjectByIdWithItemsSpec(request.ProjectId);
     var entity = await _repository.FirstOrDefaultAsync(spec, cancellationToken);
-    if (entity == null) return Result.NotFound("Project not found.");
+    if (entity == null)
+    {
+      return Result.NotFound("Project not found.");
+    }
 
     var item = entity.Items.FirstOrDefault(i => i.Id == request.ToDoItemId);
-    if (item == null) return Result.NotFound("Item not found.");
+    if (item == null)
+    {
+      return Result.NotFound("Item not found.");
+    }
 
     item.MarkComplete();
-    await _repository.UpdateAsync(entity);
+    await _repository.UpdateAsync(entity, cancellationToken);
 
     return Result.Success();
   }

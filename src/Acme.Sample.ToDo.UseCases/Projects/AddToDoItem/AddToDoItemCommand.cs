@@ -3,7 +3,7 @@
 namespace Acme.Sample.ToDo.UseCases.Projects.AddToDoItem;
 
 /// <summary>
-/// Creates a new <see cref="ToDoItem"/> and adds it to a Project
+///   Creates a new <see cref="ToDoItem" /> and adds it to a Project
 /// </summary>
 /// <param name="ProjectId"></param>
 /// <param name="ContributorId"></param>
