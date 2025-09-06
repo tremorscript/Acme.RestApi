@@ -10,6 +10,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Item", "Solution I
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.SampleToDo.Core", "src\Acme.SampleToDo.Core\Acme.SampleToDo.Core.csproj", "{5F5A6C2E-A0DE-43B1-8B83-AF7B0AE31D0A}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{36340BCF-093A-4D12-9F17-23D2249FCF93}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.Sample.ToDo.UseCases", "src\Acme.Sample.ToDo.UseCases\Acme.Sample.ToDo.UseCases.csproj", "{61541BF0-7214-451B-99B8-E2FE0A557CA0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -20,5 +24,13 @@ Global
 		{5F5A6C2E-A0DE-43B1-8B83-AF7B0AE31D0A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{5F5A6C2E-A0DE-43B1-8B83-AF7B0AE31D0A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{5F5A6C2E-A0DE-43B1-8B83-AF7B0AE31D0A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61541BF0-7214-451B-99B8-E2FE0A557CA0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61541BF0-7214-451B-99B8-E2FE0A557CA0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61541BF0-7214-451B-99B8-E2FE0A557CA0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61541BF0-7214-451B-99B8-E2FE0A557CA0}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5F5A6C2E-A0DE-43B1-8B83-AF7B0AE31D0A} = {36340BCF-093A-4D12-9F17-23D2249FCF93}
+		{61541BF0-7214-451B-99B8-E2FE0A557CA0} = {36340BCF-093A-4D12-9F17-23D2249FCF93}
 	EndGlobalSection
 EndGlobal

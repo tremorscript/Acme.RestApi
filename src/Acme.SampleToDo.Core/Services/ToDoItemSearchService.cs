@@ -6,13 +6,13 @@ namespace Acme.SampleToDo.Core.Services;
 
 public class ToDoItemSearchService : IToDoItemSearchService
 {
+  private readonly IRepository<Project> _repository;
+
   public ToDoItemSearchService(IRepository<Project> repository)
   {
     _repository = repository;
   }
 
-  private readonly IRepository<Project> _repository;
-  
   public Task<Result<ToDoItem>> GetNextIncompleteItemAsync(ProjectId projectId)
   {
     throw new NotImplementedException();
@@ -20,16 +20,16 @@ public class ToDoItemSearchService : IToDoItemSearchService
 
   public async Task<Result<List<ToDoItem>>> GetAllIncompleteItemsAsync(ProjectId projectId, string searchString)
   {
-    if (String.IsNullOrEmpty(searchString))
+    if (string.IsNullOrEmpty(searchString))
     {
-      var errors = new List<ValidationError>()
+      var errors = new List<ValidationError>
       {
         new() { Identifier = nameof(searchString), ErrorMessage = $"{nameof(searchString)} is required." }
       };
-      
+
       return Result<List<ToDoItem>>.Invalid(errors);
     }
-    
+
     var projectSpec = new ProjectByIdWithItemsSpec(projectId);
     var project = await _repository.FirstOrDefaultAsync(projectSpec);
 
@@ -48,7 +48,7 @@ public class ToDoItemSearchService : IToDoItemSearchService
     catch (Exception ex)
     {
       // TODO: Log details here
-      return Result<List<ToDoItem>>.Error( ex.Message );
+      return Result<List<ToDoItem>>.Error(ex.Message);
     }
   }
 }

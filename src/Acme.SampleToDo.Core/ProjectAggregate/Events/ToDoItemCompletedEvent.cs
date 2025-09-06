@@ -2,10 +2,10 @@
 
 public class ToDoItemCompletedEvent : DomainEventBase
 {
-  public ToDoItem CompletedItem { get;  set; }
-
   public ToDoItemCompletedEvent(ToDoItem completedItem)
   {
-    CompletedItem = completedItem; 
+    CompletedItem = completedItem;
   }
+
+  public ToDoItem CompletedItem { get; set; }
 }

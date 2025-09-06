@@ -1,4 +1,5 @@
 ﻿using Vogen;
+
 namespace Acme.SampleToDo.Core.ProjectAggregate;
 
 [ValueObject<int>]

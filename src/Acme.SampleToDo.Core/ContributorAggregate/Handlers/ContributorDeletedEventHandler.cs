@@ -6,8 +6,8 @@ namespace Acme.SampleToDo.Core.ContributorAggregate.Handlers;
 
 internal class ContributorDeletedEventHandler : INotificationHandler<ContributorDeletedEvent>
 {
-  private readonly IRepository<Project> _repository;
   private readonly ILogger<ContributorDeletedEventHandler> _logger;
+  private readonly IRepository<Project> _repository;
 
   public ContributorDeletedEventHandler(IRepository<Project> repository, ILogger<ContributorDeletedEventHandler> logger)
   {
@@ -17,7 +17,8 @@ internal class ContributorDeletedEventHandler : INotificationHandler<Contributor
 
   public async Task Handle(ContributorDeletedEvent domainEvent, CancellationToken cancellationToken)
   {
-    _logger.LogInformation("Removing deleted contributor {contributorId} from all projects...", domainEvent.ContributorId);
+    _logger.LogInformation("Removing deleted contributor {contributorId} from all projects...",
+      domainEvent.ContributorId);
     // Perform eventual consistency removal of contributors from projects when one is deleted
     var projectSpec = new ProjectsWithItemsByContributorIdSpec(domainEvent.ContributorId);
     var projects = await _repository.ListAsync(projectSpec, cancellationToken);
@@ -29,6 +30,5 @@ internal class ContributorDeletedEventHandler : INotificationHandler<Contributor
         .ForEach(item => item.RemoveContributor());
       await _repository.UpdateAsync(project, cancellationToken);
     }
-    
   }
 }

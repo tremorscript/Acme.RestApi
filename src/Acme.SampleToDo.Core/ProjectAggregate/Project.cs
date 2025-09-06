@@ -4,17 +4,17 @@ namespace Acme.SampleToDo.Core.ProjectAggregate;
 
 public class Project : EntityBase<Project, ProjectId>, IAggregateRoot
 {
-  public ProjectName Name { get; private set; }
-
   private readonly List<ToDoItem> _items = [];
-  public IEnumerable<ToDoItem> Items => _items.AsReadOnly();
-  
-  public ProjectStatus Status => _items.All(i => i.IsDone) ? ProjectStatus.Complete : ProjectStatus.InProgress;
-  
+
   public Project(ProjectName name)
   {
     Name = name;
   }
+
+  public ProjectName Name { get; private set; }
+  public IEnumerable<ToDoItem> Items => _items.AsReadOnly();
+
+  public ProjectStatus Status => _items.All(i => i.IsDone) ? ProjectStatus.Complete : ProjectStatus.InProgress;
 
   public Project AddItem(ToDoItem newItem)
   {
@@ -22,7 +22,7 @@ public class Project : EntityBase<Project, ProjectId>, IAggregateRoot
     _items.Add(newItem);
 
     var newItemAddedEvent = new NewItemAddedEvent(this, newItem);
-    base.RegisterDomainEvent(newItemAddedEvent);
+    RegisterDomainEvent(newItemAddedEvent);
     return this;
   }
 

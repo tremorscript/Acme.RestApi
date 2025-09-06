@@ -2,7 +2,7 @@
 
 namespace Acme.SampleToDo.Core.ProjectAggregate;
 
-public class ToDoItem : EntityBase<ToDoItem, ToDoItemId> 
+public class ToDoItem : EntityBase<ToDoItem, ToDoItemId>
 {
   public ToDoItem() : this(Priority.Backlog)
   {
@@ -12,7 +12,7 @@ public class ToDoItem : EntityBase<ToDoItem, ToDoItemId>
   {
     Priority = priority;
   }
-  
+
   public string Title { get; set; } = string.Empty;
   public string Description { get; set; } = string.Empty;
   public int? ContributorId { get; private set; } // tasks don't have anyone assigned when first created
@@ -21,14 +21,14 @@ public class ToDoItem : EntityBase<ToDoItem, ToDoItemId>
 
   public ToDoItem MarkComplete()
   {
-    
     if (!IsDone)
     {
       IsDone = true;
 
       RegisterDomainEvent(new ToDoItemCompletedEvent(this));
     }
-    return this;  
+
+    return this;
   }
 
   public ToDoItem AddContributor(int contributorId)
@@ -37,12 +37,12 @@ public class ToDoItem : EntityBase<ToDoItem, ToDoItemId>
     ContributorId = contributorId;
 
     var contributorAddedToItem = new ContributorAddedToItemEvent(this, contributorId);
-    
-    base.RegisterDomainEvent(contributorAddedToItem);
-    
+
+    RegisterDomainEvent(contributorAddedToItem);
+
     return this;
   }
-  
+
   public ToDoItem RemoveContributor()
   {
     ContributorId = null;
@@ -51,8 +51,7 @@ public class ToDoItem : EntityBase<ToDoItem, ToDoItemId>
 
   public override string ToString()
   {
-    string status = IsDone ? "Done!" : "Not done.";
+    var status = IsDone ? "Done!" : "Not done.";
     return $"{Id}: Status: {status} - {Title} - {Description}";
   }
-  
 }

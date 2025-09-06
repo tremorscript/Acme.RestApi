@@ -4,19 +4,22 @@ namespace Acme.SampleToDo.Core.ContributorAggregate;
 
 public class Contributor : EntityBase, IAggregateRoot
 {
-  public ContributorName Name { get; private set; }
-
   public Contributor(ContributorName name)
   {
     Name = name;
   }
 
+  public ContributorName Name { get; private set; }
+
   public Contributor UpdateName(ContributorName newName)
   {
-    if (Name.Equals(newName)) return this;
+    if (Name.Equals(newName))
+    {
+      return this;
+    }
+
     Name = newName;
-    this.RegisterDomainEvent(new ContributorNameUpdatedEvent(this));
+    RegisterDomainEvent(new ContributorNameUpdatedEvent(this));
     return this;
   }
 }
-

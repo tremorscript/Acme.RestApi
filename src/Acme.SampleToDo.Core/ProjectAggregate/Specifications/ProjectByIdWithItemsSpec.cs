@@ -2,7 +2,6 @@
 
 public class ProjectByIdWithItemsSpec : Specification<Project>
 {
-   
   public ProjectByIdWithItemsSpec(ProjectId projectId)
   {
     Query
