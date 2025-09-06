@@ -1,0 +1,58 @@
+﻿using Acme.SampleToDo.Core.ProjectAggregate.Events;
+
+namespace Acme.SampleToDo.Core.ProjectAggregate;
+
+public class ToDoItem : EntityBase<ToDoItem, ToDoItemId> 
+{
+  public ToDoItem() : this(Priority.Backlog)
+  {
+  }
+
+  public ToDoItem(Priority priority)
+  {
+    Priority = priority;
+  }
+  
+  public string Title { get; set; } = string.Empty;
+  public string Description { get; set; } = string.Empty;
+  public int? ContributorId { get; private set; } // tasks don't have anyone assigned when first created
+  public bool IsDone { get; private set; }
+  public Priority Priority { get; private set; }
+
+  public ToDoItem MarkComplete()
+  {
+    
+    if (!IsDone)
+    {
+      IsDone = true;
+
+      RegisterDomainEvent(new ToDoItemCompletedEvent(this));
+    }
+    return this;  
+  }
+
+  public ToDoItem AddContributor(int contributorId)
+  {
+    Guard.Against.Null(contributorId);
+    ContributorId = contributorId;
+
+    var contributorAddedToItem = new ContributorAddedToItemEvent(this, contributorId);
+    
+    base.RegisterDomainEvent(contributorAddedToItem);
+    
+    return this;
+  }
+  
+  public ToDoItem RemoveContributor()
+  {
+    ContributorId = null;
+    return this;
+  }
+
+  public override string ToString()
+  {
+    string status = IsDone ? "Done!" : "Not done.";
+    return $"{Id}: Status: {status} - {Title} - {Description}";
+  }
+  
+}
