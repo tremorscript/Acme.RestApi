@@ -1,6 +1,5 @@
-﻿namespace Acme.Sample.ToDo.UseCases.Projects.Update;
+﻿using Acme.SampleToDo.Core.ProjectAggregate;
 
-public class UpdateProjectCommand
-{
-  
-}
+namespace Acme.Sample.ToDo.UseCases.Projects.Update;
+
+public record UpdateProjectCommand(ProjectId ProjectId, ProjectName NewName) : ICommand<Result<ProjectDTO>>;
