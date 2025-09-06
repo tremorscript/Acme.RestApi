@@ -1,7 +1,7 @@
 ﻿using Acme.SampleToDo.Core.ProjectAggregate;
 using Acme.SampleToDo.Core.ProjectAggregate.Specifications;
 
-namespace Acme.Sample.ToDo.UseCases.Projects.ListShallow.__.MarkToDoItemComplete;
+namespace Acme.Sample.ToDo.UseCases.Projects.MarkToDoItemComplete;
 
 public class MarkToDoItemCompleteHandler : ICommandHandler<MarkToDoItemCompleteCommand, Result>
 {

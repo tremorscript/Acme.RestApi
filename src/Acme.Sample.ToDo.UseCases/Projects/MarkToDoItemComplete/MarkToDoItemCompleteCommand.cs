@@ -1,6 +1,6 @@
 ﻿using Acme.SampleToDo.Core.ProjectAggregate;
 
-namespace Acme.Sample.ToDo.UseCases.Projects.ListShallow.__.MarkToDoItemComplete;
+namespace Acme.Sample.ToDo.UseCases.Projects.MarkToDoItemComplete;
 
 /// <summary>
 /// Create a new Project.
