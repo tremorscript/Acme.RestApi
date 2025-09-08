@@ -1,0 +1,6 @@
+@Acme.SampleToDo.Web_HostAddress = http://localhost:5211
+
+GET {{Acme.SampleToDo.Web_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
