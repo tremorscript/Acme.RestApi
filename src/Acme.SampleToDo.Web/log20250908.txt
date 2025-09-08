@@ -1,0 +1,119 @@
+2025-09-08 11:42:29.611 +05:30 [INF] Registered 13 endpoints in 329 milliseconds.
+2025-09-08 11:42:30.166 +05:30 [INF] Executed DbCommand (17ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+PRAGMA journal_mode = 'wal';
+2025-09-08 11:42:30.251 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Contributors" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Contributors" PRIMARY KEY AUTOINCREMENT,
+    "Name" TEXT NOT NULL
+);
+2025-09-08 11:42:30.251 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "Projects" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_Projects" PRIMARY KEY,
+    "Name" TEXT NOT NULL
+);
+2025-09-08 11:42:30.251 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE TABLE "ToDoItems" (
+    "Id" INTEGER NOT NULL CONSTRAINT "PK_ToDoItems" PRIMARY KEY,
+    "Title" TEXT NOT NULL,
+    "Description" TEXT NOT NULL,
+    "ContributorId" INTEGER NULL,
+    "IsDone" INTEGER NOT NULL,
+    "Priority" INTEGER NOT NULL,
+    "ProjectId" INTEGER NULL,
+    CONSTRAINT "FK_ToDoItems_Projects_ProjectId" FOREIGN KEY ("ProjectId") REFERENCES "Projects" ("Id")
+);
+2025-09-08 11:42:30.251 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+CREATE INDEX "IX_ToDoItems_ProjectId" ON "ToDoItems" ("ProjectId");
+2025-09-08 11:42:30.405 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "ToDoItems" AS "t")
+2025-09-08 11:42:30.444 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Name"
+FROM "Projects" AS "p"
+2025-09-08 11:42:30.454 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."ContributorId", "t"."Description", "t"."IsDone", "t"."Priority", "t"."ProjectId", "t"."Title"
+FROM "ToDoItems" AS "t"
+2025-09-08 11:42:30.459 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "c"."Id", "c"."Name"
+FROM "Contributors" AS "c"
+2025-09-08 11:42:30.546 +05:30 [INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (Size = 7)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contributors" ("Name")
+VALUES (@p0)
+RETURNING "Id";
+2025-09-08 11:42:30.555 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (Size = 8)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Contributors" ("Name")
+VALUES (@p0)
+RETURNING "Id";
+2025-09-08 11:42:30.573 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "p"."Id", "p"."Name"
+FROM "Projects" AS "p"
+2025-09-08 11:42:30.598 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."ContributorId", "t"."Description", "t"."IsDone", "t"."Priority", "t"."ProjectId", "t"."Title"
+FROM "ToDoItems" AS "t"
+2025-09-08 11:42:30.636 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."ContributorId", "t"."Description", "t"."IsDone", "t"."Priority", "t"."ProjectId", "t"."Title"
+FROM "ToDoItems" AS "t"
+2025-09-08 11:42:30.637 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT "t"."Id", "t"."ContributorId", "t"."Description", "t"."IsDone", "t"."Priority", "t"."ProjectId", "t"."Title"
+FROM "ToDoItems" AS "t"
+2025-09-08 11:42:30.650 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (Size = 12)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Projects" ("Id", "Name")
+VALUES (@p0, @p1);
+2025-09-08 11:42:30.652 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 31), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 18)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ToDoItems" ("Id", "ContributorId", "Description", "IsDone", "Priority", "ProjectId", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-09-08 11:42:30.652 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 81), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 15)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ToDoItems" ("Id", "ContributorId", "Description", "IsDone", "Priority", "ProjectId", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-09-08 11:42:30.653 +05:30 [INF] Executed DbCommand (0ms) [Parameters=[@p0='?' (DbType = Int32), @p1='?' (DbType = Int32), @p2='?' (Size = 59), @p3='?' (DbType = Boolean), @p4='?' (DbType = Int32), @p5='?' (DbType = Int32), @p6='?' (Size = 20)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "ToDoItems" ("Id", "ContributorId", "Description", "IsDone", "Priority", "ProjectId", "Title")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5, @p6);
+2025-09-08 11:42:30.686 +05:30 [INF] Now listening on: http://localhost:53506
+2025-09-08 11:42:30.687 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-08 11:42:30.687 +05:30 [INF] Hosting environment: Development
+2025-09-08 11:42:30.687 +05:30 [INF] Content root path: D:\source\repos\tremorscript\Acme.RestApi\src\Acme.SampleToDo.Web
+2025-09-08 11:42:31.794 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/ - null null
+2025-09-08 11:42:31.835 +05:30 [WRN] Failed to determine the https port for redirect.
+2025-09-08 11:42:31.858 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/ - 404 0 null 65.2738ms
+2025-09-08 11:42:31.863 +05:30 [INF] Request reached the end of the middleware pipeline without being handled by application code. Request path: GET http://localhost:5211/, Response status code: 404
+2025-09-08 11:42:42.009 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger - null null
+2025-09-08 11:42:42.013 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger - 302 0 null 3.4464ms
+2025-09-08 11:42:42.019 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/index.html - null null
+2025-09-08 11:42:42.084 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/index.html - 200 null text/html; charset=utf-8 65.2197ms
+2025-09-08 11:42:42.135 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/swagger-ui.css - null null
+2025-09-08 11:42:42.144 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/index.css - null null
+2025-09-08 11:42:42.145 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/swagger-ui-bundle.js - null null
+2025-09-08 11:42:42.145 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/swagger-ui-standalone-preset.js - null null
+2025-09-08 11:42:42.148 +05:30 [INF] Sending file. Request path: '/index.css'. Physical path: 'N/A'
+2025-09-08 11:42:42.149 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/index.css - 200 218 text/css 4.4393ms
+2025-09-08 11:42:42.151 +05:30 [INF] Sending file. Request path: '/swagger-ui.css'. Physical path: 'N/A'
+2025-09-08 11:42:42.152 +05:30 [INF] Sending file. Request path: '/swagger-ui-standalone-preset.js'. Physical path: 'N/A'
+2025-09-08 11:42:42.153 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/swagger-ui.css - 200 152073 text/css 18.7362ms
+2025-09-08 11:42:42.153 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/swagger-ui-standalone-preset.js - 200 230294 text/javascript 7.9904ms
+2025-09-08 11:42:42.167 +05:30 [INF] Sending file. Request path: '/swagger-ui-bundle.js'. Physical path: 'N/A'
+2025-09-08 11:42:42.168 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/swagger-ui-bundle.js - 200 1452754 text/javascript 23.2304ms
+2025-09-08 11:42:42.335 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/favicon-32x32.png - null null
+2025-09-08 11:42:42.336 +05:30 [INF] Sending file. Request path: '/favicon-32x32.png'. Physical path: 'N/A'
+2025-09-08 11:42:42.336 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/favicon-32x32.png - 200 628 image/png 0.5742ms
+2025-09-08 11:42:42.369 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/v1/swagger.json - null null
+2025-09-08 11:42:42.375 +05:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-09-08 11:42:42.818 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 449.4068ms
+2025-09-08 11:45:53.460 +05:30 [INF] Registered 13 endpoints in 314 milliseconds.
+2025-09-08 11:45:54.041 +05:30 [INF] Executed DbCommand (9ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT COUNT(*) FROM "sqlite_master" WHERE "type" = 'table' AND "rootpage" IS NOT NULL;
+2025-09-08 11:45:54.210 +05:30 [INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "ToDoItems" AS "t")
+2025-09-08 11:45:54.237 +05:30 [INF] Now listening on: http://localhost:53598
+2025-09-08 11:45:54.237 +05:30 [INF] Application started. Press Ctrl+C to shut down.
+2025-09-08 11:45:54.237 +05:30 [INF] Hosting environment: Development
+2025-09-08 11:45:54.237 +05:30 [INF] Content root path: D:\source\repos\tremorscript\Acme.RestApi\src\Acme.SampleToDo.Web
+2025-09-08 11:45:56.490 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger - null null
+2025-09-08 11:45:56.540 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger - 302 0 null 50.9131ms
+2025-09-08 11:45:56.565 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/index.html - null null
+2025-09-08 11:45:56.625 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/index.html - 200 null text/html; charset=utf-8 59.6002ms
+2025-09-08 11:45:56.898 +05:30 [INF] Request starting HTTP/1.1 GET http://localhost:5211/swagger/v1/swagger.json - null null
+2025-09-08 11:45:56.904 +05:30 [INF] No action descriptors found. This may indicate an incorrectly configured application or missing application parts. To learn more, visit https://aka.ms/aspnet/mvc/app-parts
+2025-09-08 11:45:57.402 +05:30 [INF] Request finished HTTP/1.1 GET http://localhost:5211/swagger/v1/swagger.json - 200 null application/json; charset=utf-8 503.7597ms

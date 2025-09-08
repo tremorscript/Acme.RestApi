@@ -1,0 +1,29 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <Sdk Name="Aspire.AppHost.Sdk" Version="9.4.2"/>
+
+    <PropertyGroup>
+        <OutputType>Exe</OutputType>
+        <TargetFramework>net9.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <UserSecretsId>95b4edb2-eb11-414a-83c0-1e2723824b47</UserSecretsId>
+    </PropertyGroup>
+
+    <ItemGroup>
+        <PackageReference Include="Aspire.Hosting.AppHost" />
+    </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Acme.SampleToDo.Web\Acme.SampleToDo.Web.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <!-- The IsAspireProjectResource attribute tells .NET Aspire to treat this 
+        reference as a standard project reference and not attempt to generate
+        a metadata file -->
+    <ProjectReference Include="..\Acme.SampleToDo.ServiceDefaults\Acme.SampleToDo.ServiceDefaults.csproj"
+                      IsAspireProjectResource="false" />
+  </ItemGroup>
+
+</Project>
