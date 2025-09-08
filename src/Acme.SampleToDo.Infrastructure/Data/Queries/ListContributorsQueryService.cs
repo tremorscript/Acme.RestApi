@@ -1,5 +1,5 @@
-﻿using Acme.Sample.ToDo.UseCases.Contributors;
-using Acme.Sample.ToDo.UseCases.Contributors.Queries.List;
+﻿using Acme.SampleToDo.UseCases.Contributors;
+using Acme.SampleToDo.UseCases.Contributors.Queries.List;
 
 namespace Acme.SampleToDo.Infrastructure.Data.Queries;
 

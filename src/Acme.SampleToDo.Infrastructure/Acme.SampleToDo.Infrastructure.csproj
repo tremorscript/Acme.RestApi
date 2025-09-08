@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Acme.Sample.ToDo.UseCases\Acme.Sample.ToDo.UseCases.csproj" />
+    <ProjectReference Include="..\Acme.SampleToDo.UseCases\Acme.SampleToDo.UseCases.csproj" />
     <ProjectReference Include="..\Acme.SampleToDo.Core\Acme.SampleToDo.Core.csproj" />
   </ItemGroup>
   

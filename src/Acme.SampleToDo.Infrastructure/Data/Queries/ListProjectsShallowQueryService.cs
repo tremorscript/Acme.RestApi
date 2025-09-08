@@ -1,5 +1,5 @@
-﻿using Acme.Sample.ToDo.UseCases.Projects;
-using Acme.Sample.ToDo.UseCases.Projects.ListShallow;
+﻿using Acme.SampleToDo.UseCases.Projects;
+using Acme.SampleToDo.UseCases.Projects.ListShallow;
 
 namespace Acme.SampleToDo.Infrastructure.Data.Queries;
 

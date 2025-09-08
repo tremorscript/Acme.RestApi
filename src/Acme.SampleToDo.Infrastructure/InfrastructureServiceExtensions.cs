@@ -1,6 +1,6 @@
-﻿using Acme.Sample.ToDo.UseCases.Contributors.Queries.List;
-using Acme.Sample.ToDo.UseCases.Projects.ListIncompleteItems;
-using Acme.Sample.ToDo.UseCases.Projects.ListShallow;
+﻿using Acme.SampleToDo.UseCases.Contributors.Queries.List;
+using Acme.SampleToDo.UseCases.Projects.ListIncompleteItems;
+using Acme.SampleToDo.UseCases.Projects.ListShallow;
 using Acme.SampleToDo.Core.Interfaces;
 using Acme.SampleToDo.Infrastructure.Data;
 using Acme.SampleToDo.Infrastructure.Data.Queries;
