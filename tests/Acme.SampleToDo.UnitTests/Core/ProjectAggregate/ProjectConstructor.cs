@@ -4,7 +4,7 @@ namespace Acme.SampleToDo.UnitTests.Core.ProjectAggregate;
 
 public class ProjectConstructor
 {
-  private string _testName = "test name";
+  private readonly string _testName = "test name";
   private Priority _testPriority = Priority.Backlog;
   private Project? _testProject;
 

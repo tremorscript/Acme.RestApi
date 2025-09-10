@@ -3,11 +3,11 @@
 namespace Acme.SampleToDo.Web.Contributors;
 
 /// <summary>
-/// List all Contributors
+///   List all Contributors
 /// </summary>
 /// <remarks>
-/// List all contributors - returns a ContributorListResponse containing the Contributors.
-/// NOTE: In DEV always returns a FAKE set of 2 contributors
+///   List all contributors - returns a ContributorListResponse containing the Contributors.
+///   NOTE: In DEV always returns a FAKE set of 2 contributors
 /// </remarks>
 public class List : EndpointWithoutRequest<ContributorListResponse>
 {

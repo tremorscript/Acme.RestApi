@@ -4,16 +4,17 @@ using Acme.SampleToDo.UseCases.Contributors.Commands.Update;
 namespace Acme.SampleToDo.Web.Contributors;
 
 /// <summary>
-/// Update an existing Contributor.
+///   Update an existing Contributor.
 /// </summary>
 /// <remarks>
-/// Update an existing Contributor by providing a fully defined replacement set of values.
-/// See: https://stackoverflow.com/questions/60761955/rest-update-best-practice-put-collection-id-without-id-in-body-vs-put-collecti
+///   Update an existing Contributor by providing a fully defined replacement set of values.
+///   See:
+///   https://stackoverflow.com/questions/60761955/rest-update-best-practice-put-collection-id-without-id-in-body-vs-put-collecti
 /// </remarks>
 public class Update : Endpoint<UpdateContributorRequest, UpdateContributorResponse>
 {
-  private readonly IRepository<Contributor> _repository;
   private readonly IMediator _mediator;
+  private readonly IRepository<Contributor> _repository;
 
   public Update(IRepository<Contributor> repository, IMediator mediator)
   {
@@ -51,7 +52,6 @@ public class Update : Endpoint<UpdateContributorRequest, UpdateContributorRespon
     {
       var dto = result.Value;
       Response = new UpdateContributorResponse(new ContributorRecord(dto.Id, dto.Name));
-      return;
     }
   }
 }

@@ -7,8 +7,8 @@ namespace Acme.SampleToDo.FunctionalTests;
 public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProgram> where TProgram : class
 {
   /// <summary>
-  /// Overriding CreateHost to avoid creating a separate ServiceProvider per this thread:
-  /// https://github.com/dotnet-architecture/eShopOnWeb/issues/465
+  ///   Overriding CreateHost to avoid creating a separate ServiceProvider per this thread:
+  ///   https://github.com/dotnet-architecture/eShopOnWeb/issues/465
   /// </summary>
   /// <param name="builder"></param>
   /// <returns></returns>
@@ -29,7 +29,7 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
       var db = scopedServices.GetRequiredService<AppDbContext>();
 
       var logger = scopedServices
-          .GetRequiredService<ILogger<CustomWebApplicationFactory<TProgram>>>();
+        .GetRequiredService<ILogger<CustomWebApplicationFactory<TProgram>>>();
 
       // Ensure the database is created.
       db.Database.EnsureCreated();
@@ -56,35 +56,34 @@ public class CustomWebApplicationFactory<TProgram> : WebApplicationFactory<TProg
   protected override void ConfigureWebHost(IWebHostBuilder builder)
   {
     builder
-        .ConfigureServices(services =>
+      .ConfigureServices(services =>
+      {
+        // Remove the app's ApplicationDbContext registration.
+        var descriptors = services.Where(d => d.ServiceType == typeof(AppDbContext) ||
+                                              d.ServiceType == typeof(DbContextOptions<AppDbContext>))
+          .ToList();
+
+        foreach (var descriptor in descriptors)
         {
-          // Remove the app's ApplicationDbContext registration.
-          var descriptors = services.Where(
-            d => d.ServiceType == typeof(AppDbContext) ||
-                 d.ServiceType == typeof(DbContextOptions<AppDbContext>))
-                .ToList();
+          services.Remove(descriptor);
+        }
 
-          foreach(var descriptor in descriptors)
-          {
-            services.Remove(descriptor);
-          }
+        // This should be set for each individual test run
+        var inMemoryCollectionName = Guid.NewGuid().ToString();
 
-          // This should be set for each individual test run
-          string inMemoryCollectionName = Guid.NewGuid().ToString();
-
-          // Add ApplicationDbContext using an in-memory database for testing.
-          services.AddDbContext<AppDbContext>(options =>
-          {
-            options.UseInMemoryDatabase(inMemoryCollectionName).LogTo(s => Console.WriteLine(s));
-          });
-
-          // Add MediatR
-          services.AddMediatR(cfg =>
-          {
-            cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly,
-              typeof(CreateContributorCommand).Assembly,
-              typeof(AppDbContext).Assembly);
-          });
+        // Add ApplicationDbContext using an in-memory database for testing.
+        services.AddDbContext<AppDbContext>(options =>
+        {
+          options.UseInMemoryDatabase(inMemoryCollectionName).LogTo(s => Console.WriteLine(s));
         });
+
+        // Add MediatR
+        services.AddMediatR(cfg =>
+        {
+          cfg.RegisterServicesFromAssemblies(typeof(Program).Assembly,
+            typeof(CreateContributorCommand).Assembly,
+            typeof(AppDbContext).Assembly);
+        });
+      });
   }
 }

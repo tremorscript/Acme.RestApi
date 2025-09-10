@@ -5,7 +5,7 @@ using Shouldly;
 namespace Acme.SampleToDo.FunctionalTests.Projects;
 
 [Collection("Sequential")]
-public class ProjectItemMarkComplete : 
+public class ProjectItemMarkComplete :
   IClassFixture<CustomWebApplicationFactory<Program>>,
   IClassFixture<SmtpServerFixture>
 {
@@ -18,7 +18,7 @@ public class ProjectItemMarkComplete :
   }
 
   /// <summary>
-  /// Currently this fails if you don't have a local mailserver running, like papercut
+  ///   Currently this fails if you don't have a local mailserver running, like papercut
   /// </summary>
   /// <returns></returns>
   [Fact]
@@ -38,7 +38,8 @@ public class ProjectItemMarkComplete :
     stringResponse.ShouldBeEmpty();
 
     // confirm item is complete
-    var project = await _client.GetAndDeserializeAsync<GetProjectByIdResponse>(GetProjectByIdRequest.BuildRoute(projectId));
+    var project =
+      await _client.GetAndDeserializeAsync<GetProjectByIdResponse>(GetProjectByIdRequest.BuildRoute(projectId));
     project.Items.First(i => i.Id == itemId).IsDone.ShouldBeTrue();
   }
 }

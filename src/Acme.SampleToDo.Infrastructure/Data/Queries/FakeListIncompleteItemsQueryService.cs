@@ -7,7 +7,7 @@ public class FakeListIncompleteItemsQueryService : IListIncompleteItemsQueryServ
 {
   public async Task<IEnumerable<ToDoItemDTO>> ListAsync(int projectId)
   {
-    var testItem = new ToDoItemDTO(Id: 1000, Title: "test", Description: "test description", IsComplete: false, null);
-    return await Task.FromResult(new List<ToDoItemDTO>() { testItem});
+    var testItem = new ToDoItemDTO(1000, "test", "test description", false, null);
+    return await Task.FromResult(new List<ToDoItemDTO> { testItem });
   }
 }

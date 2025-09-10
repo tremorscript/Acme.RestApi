@@ -3,7 +3,7 @@ using Acme.SampleToDo.UseCases.Projects.ListShallow;
 
 namespace Acme.SampleToDo.Infrastructure.Data.Queries;
 
-public class ListProjectsShallowQueryService(AppDbContext db) : 
+public class ListProjectsShallowQueryService(AppDbContext db) :
   IListProjectsShallowQueryService
 {
   private readonly AppDbContext _db = db;

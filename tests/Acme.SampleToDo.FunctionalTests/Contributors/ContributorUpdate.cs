@@ -18,7 +18,7 @@ public class ContributorUpdate : IClassFixture<CustomWebApplicationFactory<Progr
   public async Task UpdatesContributorNameAndReturnsUpdatedRecord()
   {
     var newName = Guid.NewGuid().ToString();
-    var request = new UpdateContributorRequest() { Id = SeedData.Contributor1.Id, Name = newName };
+    var request = new UpdateContributorRequest { Id = SeedData.Contributor1.Id, Name = newName };
     var putRoute = UpdateContributorRequest.BuildRoute(SeedData.Contributor1.Id);
 
     var content = StringContentHelpers.FromModelAsJson(request);
@@ -32,9 +32,9 @@ public class ContributorUpdate : IClassFixture<CustomWebApplicationFactory<Progr
   [Fact]
   public async Task ReturnsNotFoundGivenMissingContributorId()
   {
-    int invalidId = 1000;
+    var invalidId = 1000;
     var putRoute = UpdateContributorRequest.BuildRoute(invalidId);
-    var request = new UpdateContributorRequest() { Id = invalidId, Name = "some name" };
+    var request = new UpdateContributorRequest { Id = invalidId, Name = "some name" };
     var content = StringContentHelpers.FromModelAsJson(request);
 
     _ = await _client.PutAndEnsureNotFoundAsync(putRoute, content);
@@ -43,10 +43,10 @@ public class ContributorUpdate : IClassFixture<CustomWebApplicationFactory<Progr
   [Fact]
   public async Task ReturnsBadRequestIfRouteIdDoesNotMatchBodyId()
   {
-    int routeId = 1;
-    int bodyId = 2;
+    var routeId = 1;
+    var bodyId = 2;
     var putRoute = UpdateContributorRequest.BuildRoute(routeId);
-    var request = new UpdateContributorRequest() { Id = bodyId, Name = "some name" };
+    var request = new UpdateContributorRequest { Id = bodyId, Name = "some name" };
     var content = StringContentHelpers.FromModelAsJson(request);
 
     _ = await _client.PutAndEnsureBadRequestAsync(putRoute, content);

@@ -17,11 +17,11 @@ public class ProjectCreate : IClassFixture<CustomWebApplicationFactory<Program>>
   public async Task ReturnsOneProject()
   {
     var testName = Guid.NewGuid().ToString();
-    var request = new CreateProjectRequest() { Name = testName };
+    var request = new CreateProjectRequest { Name = testName };
     var content = StringContentHelpers.FromModelAsJson(request);
 
     var result = await _client.PostAndDeserializeAsync<CreateProjectResponse>(
-        CreateProjectRequest.Route, content);
+      CreateProjectRequest.Route, content);
 
     result.Name.ShouldBe(testName);
     result.Id.ShouldBeGreaterThan(0);

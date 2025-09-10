@@ -4,11 +4,11 @@ using Acme.SampleToDo.UseCases.Projects.ListShallow;
 namespace Acme.SampleToDo.Web.Projects;
 
 /// <summary>
-/// Lists all projects without their sub-properties.
+///   Lists all projects without their sub-properties.
 /// </summary>
 /// <remarks>
-/// Lists all projects without their sub-properties.
-/// NOTE: In DEV will always show a FAKE ID 1000 project, not real data
+///   Lists all projects without their sub-properties.
+///   NOTE: In DEV will always show a FAKE ID 1000 project, not real data
 /// </remarks>
 public class List(IMediator mediator) : EndpointWithoutRequest<ProjectListResponse>
 {

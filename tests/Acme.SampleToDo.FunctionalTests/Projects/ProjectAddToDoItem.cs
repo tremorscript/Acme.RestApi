@@ -19,11 +19,9 @@ public class ProjectAddToDoItem : IClassFixture<CustomWebApplicationFactory<Prog
   {
     var toDoTitle = Guid.NewGuid().ToString();
     var testProjectId = SeedData.TestProject1.Id;
-    var request = new CreateToDoItemRequest()
+    var request = new CreateToDoItemRequest
     {
-      Title = toDoTitle,
-      ProjectId = testProjectId.Value,
-      Description = toDoTitle
+      Title = toDoTitle, ProjectId = testProjectId.Value, Description = toDoTitle
     };
     var content = StringContentHelpers.FromModelAsJson(request);
 

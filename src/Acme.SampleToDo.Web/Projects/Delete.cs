@@ -5,7 +5,7 @@ using Ardalis.Result.AspNetCore;
 namespace Acme.SampleToDo.Web.Projects;
 
 /// <summary>
-/// Deletes a project
+///   Deletes a project
 /// </summary>
 public class Delete(IMediator mediator) : Endpoint<DeleteProjectRequest>
 {
@@ -18,8 +18,8 @@ public class Delete(IMediator mediator) : Endpoint<DeleteProjectRequest>
   }
 
   public override async Task HandleAsync(
-  DeleteProjectRequest request,
-  CancellationToken cancellationToken)
+    DeleteProjectRequest request,
+    CancellationToken cancellationToken)
   {
     var command = new DeleteProjectCommand(ProjectId.From(request.ProjectId));
 

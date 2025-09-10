@@ -19,14 +19,14 @@ public class ContributorDelete : IClassFixture<CustomWebApplicationFactory<Progr
     var deleteRoute = DeleteContributorRequest.BuildRoute(SeedData.Contributor1.Id);
     _ = await _client.DeleteAndEnsureNoContentAsync(deleteRoute);
 
-    string getRoute = GetContributorByIdRequest.BuildRoute(SeedData.Contributor1.Id);
+    var getRoute = GetContributorByIdRequest.BuildRoute(SeedData.Contributor1.Id);
     _ = await _client.GetAndEnsureNotFoundAsync(getRoute);
   }
 
   [Fact]
   public async Task ReturnsNotFoundGivenMissingContributorId()
   {
-    int invalidId = 1000;
+    var invalidId = 1000;
     var deleteRoute = DeleteContributorRequest.BuildRoute(invalidId);
     _ = await _client.DeleteAndEnsureNotFoundAsync(deleteRoute);
   }

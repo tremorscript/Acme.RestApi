@@ -21,7 +21,6 @@ public class ContributorConstructor
   }
 }
 
-
 public class ContributorUpdateName
 {
   private readonly string _testName = "new name";
@@ -51,7 +50,7 @@ public class ContributorUpdateName
   {
     _testContributor = CreateContributor();
     var initialEvents = _testContributor.DomainEvents.Count;
-    string newName = "A whole new name";
+    var newName = "A whole new name";
 
     _testContributor.UpdateName(ContributorName.From(newName));
 

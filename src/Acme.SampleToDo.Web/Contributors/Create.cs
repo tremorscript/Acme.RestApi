@@ -4,10 +4,10 @@ using Acme.SampleToDo.UseCases.Contributors.Commands.Create;
 namespace Acme.SampleToDo.Web.Contributors;
 
 /// <summary>
-/// Create a new Contributor
+///   Create a new Contributor
 /// </summary>
 /// <remarks>
-/// Creates a new Contributor given a name.
+///   Creates a new Contributor given a name.
 /// </remarks>
 public class Create : Endpoint<CreateContributorRequest, CreateContributorResponse>
 {
@@ -40,7 +40,6 @@ public class Create : Endpoint<CreateContributorRequest, CreateContributorRespon
     if (result.IsSuccess)
     {
       Response = new CreateContributorResponse(result.Value, request.Name!);
-      return;
     }
     // TODO: Handle other cases as necessary
   }

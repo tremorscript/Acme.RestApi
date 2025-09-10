@@ -4,7 +4,7 @@ using FluentValidation;
 namespace Acme.SampleToDo.Web.Projects;
 
 /// <summary>
-/// See: https://fast-endpoints.com/docs/validation
+///   See: https://fast-endpoints.com/docs/validation
 /// </summary>
 public class CreateToDoItemValidator : Validator<CreateToDoItemRequest>
 {

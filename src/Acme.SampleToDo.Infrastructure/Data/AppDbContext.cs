@@ -5,9 +5,10 @@ namespace Acme.SampleToDo.Infrastructure.Data;
 
 public class AppDbContext : DbContext
 {
-
   public AppDbContext(DbContextOptions<AppDbContext> options)
-      : base(options) {}
+    : base(options)
+  {
+  }
 
   public DbSet<ToDoItem> ToDoItems => Set<ToDoItem>();
   public DbSet<Project> Projects => Set<Project>();

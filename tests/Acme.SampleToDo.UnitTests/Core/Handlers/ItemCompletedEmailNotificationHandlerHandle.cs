@@ -7,8 +7,8 @@ namespace Acme.SampleToDo.UnitTests.Core.Handlers;
 
 public class ItemCompletedEmailNotificationHandlerHandle
 {
-  private ItemCompletedEmailNotificationHandler _handler;
-  private IEmailSender _emailSender = Substitute.For<IEmailSender>();
+  private readonly IEmailSender _emailSender = Substitute.For<IEmailSender>();
+  private readonly ItemCompletedEmailNotificationHandler _handler;
 
   public ItemCompletedEmailNotificationHandlerHandle()
   {
@@ -28,6 +28,7 @@ public class ItemCompletedEmailNotificationHandlerHandle
   {
     await _handler.Handle(new ToDoItemCompletedEvent(new ToDoItem()), CancellationToken.None);
 
-    await _emailSender.Received().SendEmailAsync(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>());
+    await _emailSender.Received()
+      .SendEmailAsync(Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>(), Arg.Any<string>());
   }
 }

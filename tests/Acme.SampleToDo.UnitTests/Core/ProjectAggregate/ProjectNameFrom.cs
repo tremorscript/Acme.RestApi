@@ -17,7 +17,7 @@ public class ProjectNameFrom
   [Fact]
   public void DoesNotThrowGivenValidData()
   {
-    string validName = "valid name";
+    var validName = "valid name";
     var name = ProjectName.From(validName);
     name.Value.ShouldBe(validName);
   }

@@ -1,13 +1,14 @@
 ﻿using Acme.SampleToDo.Infrastructure.Email;
+using ILogger = Microsoft.Extensions.Logging.ILogger;
 
 namespace Acme.SampleToDo.Web.Configurations;
 
 public static class OptionConfig
 {
   public static IServiceCollection AddOptionConfigs(this IServiceCollection services,
-                                                    IConfiguration configuration,
-                                                    Microsoft.Extensions.Logging.ILogger logger,
-                                                    WebApplicationBuilder builder)
+    IConfiguration configuration,
+    ILogger logger,
+    WebApplicationBuilder builder)
   {
     services.Configure<MailserverConfiguration>(configuration.GetSection("Mailserver"));
 

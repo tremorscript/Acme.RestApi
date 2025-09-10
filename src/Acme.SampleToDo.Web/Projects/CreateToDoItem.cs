@@ -21,10 +21,7 @@ public class Create : Endpoint<CreateToDoItemRequest>
     {
       s.ExampleRequest = new CreateToDoItemRequest
       {
-        ContributorId = 1,
-        ProjectId = 1,
-        Title = "Title",
-        Description = "Description"
+        ContributorId = 1, ProjectId = 1, Title = "Title", Description = "Description"
       };
     });
   }
@@ -37,7 +34,7 @@ public class Create : Endpoint<CreateToDoItemRequest>
       request.Title, request.Description);
     var result = await _mediator.Send(command);
 
-    if (result.Status == Ardalis.Result.ResultStatus.NotFound)
+    if (result.Status == ResultStatus.NotFound)
     {
       await SendNotFoundAsync(cancellationToken);
       return;
@@ -47,7 +44,9 @@ public class Create : Endpoint<CreateToDoItemRequest>
     {
       // send route to project
       await SendCreatedAtAsync<GetById>(new { projectId = request.ProjectId }, "");
-    };
+    }
+
+    ;
     // TODO: Handle other cases as necessary
   }
 }

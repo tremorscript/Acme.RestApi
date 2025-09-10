@@ -1,7 +1,4 @@
 ﻿using Acme.SampleToDo.Infrastructure.Data;
-using Ardalis.ListStartupServices;
-using FastEndpoints;
-using FastEndpoints.Swagger;
 using NimblePros.Metronome;
 
 namespace Acme.SampleToDo.Web.Configurations;
@@ -23,7 +20,7 @@ public static class MiddlewareConfig
     }
 
     app.UseFastEndpoints()
-        .UseSwaggerGen(); // Includes AddFileServer and static files middleware
+      .UseSwaggerGen(); // Includes AddFileServer and static files middleware
 
     app.UseHttpsRedirection();
 
@@ -32,7 +29,7 @@ public static class MiddlewareConfig
     return app;
   }
 
-  static async Task SeedDatabase(WebApplication app)
+  private static async Task SeedDatabase(WebApplication app)
   {
     using var scope = app.Services.CreateScope();
     var services = scope.ServiceProvider;

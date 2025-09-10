@@ -8,9 +8,9 @@ public class ToDoItemMarkComplete
   public void SetsIsDoneToTrue()
   {
     var item = new ToDoItemBuilder()
-        .WithDefaultValues()
-        .Description("")
-        .Build();
+      .WithDefaultValues()
+      .Description("")
+      .Build();
 
     item.MarkComplete();
 

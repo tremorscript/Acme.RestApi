@@ -1,10 +1,10 @@
-﻿using Acme.SampleToDo.UseCases.Contributors.Queries.List;
-using Acme.SampleToDo.UseCases.Projects.ListIncompleteItems;
-using Acme.SampleToDo.UseCases.Projects.ListShallow;
-using Acme.SampleToDo.Core.Interfaces;
+﻿using Acme.SampleToDo.Core.Interfaces;
 using Acme.SampleToDo.Infrastructure.Data;
 using Acme.SampleToDo.Infrastructure.Data.Queries;
 using Acme.SampleToDo.Infrastructure.Email;
+using Acme.SampleToDo.UseCases.Contributors.Queries.List;
+using Acme.SampleToDo.UseCases.Projects.ListIncompleteItems;
+using Acme.SampleToDo.UseCases.Projects.ListShallow;
 using Microsoft.Extensions.Configuration;
 using NimblePros.Metronome;
 
@@ -30,25 +30,24 @@ public static class InfrastructureServiceExtensions
     {
       RegisterProductionOnlyDependencies(services, configuration);
     }
-    
+
     RegisterEFRepositories(services);
-    
+
     logger.LogInformation("{Project} services registered", "Infrastructure");
-    
+
     return services;
   }
+
   private static void AddDbContextWithSqlite(IServiceCollection services, IConfiguration configuration)
   {
     services.AddScoped<EventDispatchInterceptor>();
     var connectionString = configuration.GetConnectionString("SqliteConnection");
     services.AddDbContext<AppDbContext>((provider, options) =>
     {
-      
       options.UseSqlite(connectionString)
-             .AddMetronomeDbTracking(provider)
-             .AddInterceptors(provider.GetRequiredService<EventDispatchInterceptor>());
+        .AddMetronomeDbTracking(provider)
+        .AddInterceptors(provider.GetRequiredService<EventDispatchInterceptor>());
     });
-             
   }
 
 

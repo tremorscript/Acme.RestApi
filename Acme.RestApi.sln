@@ -28,6 +28,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.SampleToDo.UnitTests",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.SampleToDo.FunctionalTests", "tests\Acme.SampleToDo.FunctionalTests\Acme.SampleToDo.FunctionalTests.csproj", "{471A338F-7D08-4AC7-B7B6-751B8F355055}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Acme.SampleToDo.IntegrationTests", "tests\Acme.SampleToDo.IntegrationTests\Acme.SampleToDo.IntegrationTests.csproj", "{B337BAD1-6557-46BC-A795-763DEBFCB2A5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -66,6 +68,10 @@ Global
 		{471A338F-7D08-4AC7-B7B6-751B8F355055}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{471A338F-7D08-4AC7-B7B6-751B8F355055}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{471A338F-7D08-4AC7-B7B6-751B8F355055}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B337BAD1-6557-46BC-A795-763DEBFCB2A5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B337BAD1-6557-46BC-A795-763DEBFCB2A5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B337BAD1-6557-46BC-A795-763DEBFCB2A5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B337BAD1-6557-46BC-A795-763DEBFCB2A5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{5F5A6C2E-A0DE-43B1-8B83-AF7B0AE31D0A} = {36340BCF-093A-4D12-9F17-23D2249FCF93}
@@ -76,5 +82,6 @@ Global
 		{27BC2D3D-CEAE-4EAF-8FB6-DDD13D4188CC} = {36340BCF-093A-4D12-9F17-23D2249FCF93}
 		{351C5DF9-9B66-4A41-BC6A-E250A8366C62} = {4C92E7B7-1ED0-4A37-8FCC-513BCB494629}
 		{471A338F-7D08-4AC7-B7B6-751B8F355055} = {4C92E7B7-1ED0-4A37-8FCC-513BCB494629}
+		{B337BAD1-6557-46BC-A795-763DEBFCB2A5} = {4C92E7B7-1ED0-4A37-8FCC-513BCB494629}
 	EndGlobalSection
 EndGlobal

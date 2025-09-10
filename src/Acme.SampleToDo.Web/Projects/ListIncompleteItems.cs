@@ -3,11 +3,11 @@
 namespace Acme.SampleToDo.Web.Projects;
 
 /// <summary>
-/// Lists all incomplete items in a project.
+///   Lists all incomplete items in a project.
 /// </summary>
 /// <remarks>
-/// Lists all incomplete items in a project.
-/// Returns FAKE data in DEV. Run in production to use real database-driven data.
+///   Lists all incomplete items in a project.
+///   Returns FAKE data in DEV. Run in production to use real database-driven data.
 /// </remarks>
 public class ListIncompleteItems(IMediator mediator) : Endpoint<ListIncompleteItemsRequest, ListIncompleteItemsResponse>
 {
@@ -32,8 +32,7 @@ public class ListIncompleteItems(IMediator mediator) : Endpoint<ListIncompleteIt
     }
 
     Response.IncompleteItems = result.Value.Select(item =>
-                    new ToDoItemRecord(item.Id, item.Title, item.Description, item.IsComplete, item.ContributorId))
-                    .ToList();
-
+        new ToDoItemRecord(item.Id, item.Title, item.Description, item.IsComplete, item.ContributorId))
+      .ToList();
   }
 }

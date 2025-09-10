@@ -3,6 +3,7 @@ using Acme.SampleToDo.Web.Configurations;
 using Acme.SampleToDo.Web.Projects;
 using FluentValidation;
 using NimblePros.Metronome;
+using ServiceConfig = Ardalis.ListStartupServices.ServiceConfig;
 
 public partial class Program
 {
@@ -54,7 +55,7 @@ public partial class Program
 
 
     // add list services for diagnostic purposes - see https://github.com/ardalis/AspNetCoreStartupServices
-    builder.Services.Configure((Ardalis.ListStartupServices.ServiceConfig config) =>
+    builder.Services.Configure((ServiceConfig config) =>
     {
       config.Services = new List<ServiceDescriptor>(builder.Services);
 

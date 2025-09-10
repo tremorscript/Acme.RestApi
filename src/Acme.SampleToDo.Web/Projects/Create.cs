@@ -4,10 +4,10 @@ using Ardalis.Result.AspNetCore;
 namespace Acme.SampleToDo.Web.Projects;
 
 /// <summary>
-/// Creates a new Project
+///   Creates a new Project
 /// </summary>
 /// <remarks>
-/// Creates a new project given a name.
+///   Creates a new project given a name.
 /// </remarks>
 public class Create(IMediator mediator) : Endpoint<CreateProjectRequest, CreateProjectResponse>
 {
@@ -24,8 +24,8 @@ public class Create(IMediator mediator) : Endpoint<CreateProjectRequest, CreateP
   }
 
   public override async Task HandleAsync(
-  CreateProjectRequest request,
-  CancellationToken cancellationToken)
+    CreateProjectRequest request,
+    CancellationToken cancellationToken)
   {
     var result = await _mediator.Send(new CreateProjectCommand(request.Name!));
 
@@ -34,6 +34,7 @@ public class Create(IMediator mediator) : Endpoint<CreateProjectRequest, CreateP
       Response = new CreateProjectResponse(result.Value.Value, request.Name!);
       return;
     }
+
     await SendResultAsync(result.ToMinimalApiResult());
   }
 }

@@ -1,17 +1,18 @@
 ﻿using Ardalis.GuardClauses;
-using MediatR;
 using Microsoft.Extensions.Caching.Memory;
 
 namespace Acme.SampleToDo.Web;
 
 public class CachingBehavior<TRequest, TResponse> :
-    IPipelineBehavior<TRequest, TResponse?>
+  IPipelineBehavior<TRequest, TResponse?>
   where TRequest : IRequest<TResponse>
 {
   private readonly IMemoryCache _cache;
+
+  private readonly MemoryCacheEntryOptions _cacheOptions = new MemoryCacheEntryOptions()
+    .SetAbsoluteExpiration(TimeSpan.FromSeconds(10)); // TODO: Configure
+
   private readonly ILogger<Mediator> _logger;
-  private MemoryCacheEntryOptions _cacheOptions = new MemoryCacheEntryOptions()
-            .SetAbsoluteExpiration(relative: TimeSpan.FromSeconds(10)); // TODO: Configure
 
   public CachingBehavior(IMemoryCache cache,
     ILogger<Mediator> logger)
@@ -19,9 +20,10 @@ public class CachingBehavior<TRequest, TResponse> :
     _cache = cache;
     _logger = logger;
   }
+
   public async Task<TResponse?> Handle(TRequest request,
-      RequestHandlerDelegate<TResponse?> next,
-      CancellationToken cancellationToken)
+    RequestHandlerDelegate<TResponse?> next,
+    CancellationToken cancellationToken)
   {
     Guard.Against.Null(request, nameof(request));
 

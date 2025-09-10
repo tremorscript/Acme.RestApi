@@ -7,7 +7,7 @@ public class FakeListContributorsQueryService : IListContributorsQueryService
 {
   public Task<IEnumerable<ContributorDTO>> ListAsync()
   {
-    var result = new List<ContributorDTO>() { new ContributorDTO(1, "Ardalis"), new ContributorDTO(2, "Snowfrog") };
+    var result = new List<ContributorDTO> { new(1, "Ardalis"), new(2, "Snowfrog") };
     return Task.FromResult(result.AsEnumerable());
   }
 }

@@ -9,7 +9,8 @@ public class ListContributorsHandler : IQueryHandler<ListContributorsQuery, Resu
     _query = query;
   }
 
-  public async Task<Result<IEnumerable<ContributorDTO>>> Handle(ListContributorsQuery request, CancellationToken cancellationToken)
+  public async Task<Result<IEnumerable<ContributorDTO>>> Handle(ListContributorsQuery request,
+    CancellationToken cancellationToken)
   {
     var result = await _query.ListAsync();
 

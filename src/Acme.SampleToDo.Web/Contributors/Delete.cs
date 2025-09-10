@@ -3,10 +3,10 @@
 namespace Acme.SampleToDo.Web.Contributors;
 
 /// <summary>
-/// Delete a Contributor.
+///   Delete a Contributor.
 /// </summary>
 /// <remarks>
-/// Delete a Contributor by providing a valid integer id.
+///   Delete a Contributor by providing a valid integer id.
 /// </remarks>
 public class Delete : Endpoint<DeleteContributorRequest>
 {
@@ -40,7 +40,9 @@ public class Delete : Endpoint<DeleteContributorRequest>
     if (result.IsSuccess)
     {
       await SendNoContentAsync(cancellationToken);
-    };
+    }
+
+    ;
     // TODO: Handle other issues as needed
   }
 }

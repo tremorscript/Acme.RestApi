@@ -3,7 +3,7 @@
 namespace Acme.SampleToDo.Web.Contributors;
 
 /// <summary>
-/// See: https://fast-endpoints.com/docs/validation
+///   See: https://fast-endpoints.com/docs/validation
 /// </summary>
 public class DeleteContributorValidator : Validator<DeleteContributorRequest>
 {

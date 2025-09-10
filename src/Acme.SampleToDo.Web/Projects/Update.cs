@@ -15,10 +15,11 @@ public class Update(IMediator mediator) : Endpoint<UpdateProjectRequest, UpdateP
   }
 
   public override async Task HandleAsync(
-  UpdateProjectRequest request,
-  CancellationToken cancellationToken)
+    UpdateProjectRequest request,
+    CancellationToken cancellationToken)
   {
-    var result = await _mediator.Send(new UpdateProjectCommand(ProjectId.From(request.Id), ProjectName.From(request.Name!)));
+    var result =
+      await _mediator.Send(new UpdateProjectCommand(ProjectId.From(request.Id), ProjectName.From(request.Name!)));
 
     await SendResultAsync(result.ToMinimalApiResult());
   }

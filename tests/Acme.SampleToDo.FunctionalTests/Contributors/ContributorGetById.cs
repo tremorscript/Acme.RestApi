@@ -25,7 +25,7 @@ public class ContributorGetById : IClassFixture<CustomWebApplicationFactory<Prog
   [Fact]
   public async Task ReturnsNotFoundGivenInvalidId1000()
   {
-    string route = GetContributorByIdRequest.BuildRoute(1000);
+    var route = GetContributorByIdRequest.BuildRoute(1000);
     _ = await _client.GetAndEnsureNotFoundAsync(route);
   }
 }

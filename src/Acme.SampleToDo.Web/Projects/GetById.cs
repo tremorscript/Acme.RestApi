@@ -14,7 +14,7 @@ public class GetById(IMediator mediator) : Endpoint<GetProjectByIdRequest, GetPr
   }
 
   public override async Task HandleAsync(GetProjectByIdRequest request,
-  CancellationToken cancellationToken)
+    CancellationToken cancellationToken)
   {
     var command = new GetProjectWithAllItemsQuery(ProjectId.From(request.ProjectId));
 
@@ -29,8 +29,7 @@ public class GetById(IMediator mediator) : Endpoint<GetProjectByIdRequest, GetPr
     if (result.IsSuccess)
     {
       Response = new GetProjectByIdResponse(result.Value.Id,
-        result.Value.Name, 
-        items:
+        result.Value.Name,
         result.Value.Items
           .Select(item => new ToDoItemRecord(
             item.Id,
@@ -38,9 +37,9 @@ public class GetById(IMediator mediator) : Endpoint<GetProjectByIdRequest, GetPr
             item.Description,
             item.IsComplete,
             item.ContributorId
-            ))
+          ))
           .ToList()
-          );
+      );
     }
   }
 }

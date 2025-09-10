@@ -3,10 +3,10 @@
 namespace Acme.SampleToDo.Web.Contributors;
 
 /// <summary>
-/// Get a Contributor by integer ID.
+///   Get a Contributor by integer ID.
 /// </summary>
 /// <remarks>
-/// Takes a positive integer ID and returns a matching Contributor record.
+///   Takes a positive integer ID and returns a matching Contributor record.
 /// </remarks>
 public class GetById : Endpoint<GetContributorByIdRequest, ContributorRecord>
 {

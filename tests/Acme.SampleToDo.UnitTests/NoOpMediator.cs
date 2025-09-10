@@ -7,7 +7,8 @@ public class NoOpMediator : IMediator
     return Task.CompletedTask;
   }
 
-  public Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default) where TNotification : INotification
+  public Task Publish<TNotification>(TNotification notification, CancellationToken cancellationToken = default)
+    where TNotification : INotification
   {
     return Task.CompletedTask;
   }

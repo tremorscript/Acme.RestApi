@@ -4,7 +4,7 @@ using Acme.SampleToDo.UseCases.Projects.MarkToDoItemComplete;
 namespace Acme.SampleToDo.Web.Projects;
 
 /// <summary>
-/// Mark an item as complete
+///   Mark an item as complete
 /// </summary>
 public class MarkItemComplete(IMediator mediator) : Endpoint<MarkItemCompleteRequest>
 {
@@ -16,11 +16,7 @@ public class MarkItemComplete(IMediator mediator) : Endpoint<MarkItemCompleteReq
     AllowAnonymous();
     Summary(s =>
     {
-      s.ExampleRequest = new MarkItemCompleteRequest
-      {
-        ProjectId = 1,
-        ToDoItemId = 1
-      };
+      s.ExampleRequest = new MarkItemCompleteRequest { ProjectId = 1, ToDoItemId = 1 };
     });
   }
 
@@ -31,7 +27,7 @@ public class MarkItemComplete(IMediator mediator) : Endpoint<MarkItemCompleteReq
     var command = new MarkToDoItemCompleteCommand(ProjectId.From(request.ProjectId), request.ToDoItemId);
     var result = await _mediator.Send(command);
 
-    if (result.Status == Ardalis.Result.ResultStatus.NotFound)
+    if (result.Status == ResultStatus.NotFound)
     {
       await SendNotFoundAsync(cancellationToken);
       return;
@@ -40,8 +36,9 @@ public class MarkItemComplete(IMediator mediator) : Endpoint<MarkItemCompleteReq
     if (result.IsSuccess)
     {
       await SendNoContentAsync(cancellationToken);
-    };
+    }
+
+    ;
     // TODO: Handle other issues as needed
   }
-
 }

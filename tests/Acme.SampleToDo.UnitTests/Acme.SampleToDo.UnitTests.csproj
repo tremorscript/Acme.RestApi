@@ -1,19 +1,19 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
-    <PropertyGroup>
+  <PropertyGroup>
     <PreserveCompilationContext>true</PreserveCompilationContext>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-      <CollectCoverage>true</CollectCoverage>
-      <CoverletOutput>../coverage/projects/$(MSBuildProjectName)/</CoverletOutput>
-      <CoverletOutputFormat>opencover</CoverletOutputFormat>
-    </PropertyGroup>
+    <CollectCoverage>true</CollectCoverage>
+    <CoverletOutput>../coverage/projects/$(MSBuildProjectName)/</CoverletOutput>
+    <CoverletOutputFormat>opencover</CoverletOutputFormat>
+  </PropertyGroup>
 
-    <ItemGroup>
-      <PackageReference Include="Microsoft.NET.Test.Sdk" />
-      <PackageReference Include="NimblePros.SharedKernel" />
-      <PackageReference Include="NSubstitute" />
-      <PackageReference Include="Shouldly" />
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk"/>
+    <PackageReference Include="NimblePros.SharedKernel"/>
+    <PackageReference Include="NSubstitute"/>
+    <PackageReference Include="Shouldly"/>
     <PackageReference Include="xunit.runner.visualstudio">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -26,23 +26,23 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
-    <PackageReference Include="ReportGenerator" />
-    <PackageReference Include="xunit" />
-    </ItemGroup>
+    <PackageReference Include="ReportGenerator"/>
+    <PackageReference Include="xunit"/>
+  </ItemGroup>
 
-    <ItemGroup>
-        <Using Include="Xunit"/>
-    </ItemGroup>
+  <ItemGroup>
+    <Using Include="Xunit"/>
+  </ItemGroup>
 
-    <ItemGroup>
-      <None Update="xunit.runner.json">
-        <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-      </None>
-    </ItemGroup>
+  <ItemGroup>
+    <None Update="xunit.runner.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 
-    <ItemGroup>
-      <ProjectReference Include="..\..\src\Acme.SampleToDo.Core\Acme.SampleToDo.Core.csproj" />
-      <ProjectReference Include="..\..\src\Acme.SampleToDo.UseCases\Acme.SampleToDo.UseCases.csproj" />
-    </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Acme.SampleToDo.Core\Acme.SampleToDo.Core.csproj"/>
+    <ProjectReference Include="..\..\src\Acme.SampleToDo.UseCases\Acme.SampleToDo.UseCases.csproj"/>
+  </ItemGroup>
 
 </Project>

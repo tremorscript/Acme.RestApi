@@ -8,8 +8,8 @@ public class ToDoItemConstructor
   public void InitializesPriority()
   {
     var item = new ToDoItemBuilder()
-    .WithDefaultValues()
-    .Build();
+      .WithDefaultValues()
+      .Build();
 
     Assert.Equal(item.Priority, Priority.Backlog);
   }

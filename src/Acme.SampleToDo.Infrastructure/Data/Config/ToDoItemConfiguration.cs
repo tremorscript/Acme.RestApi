@@ -11,12 +11,12 @@ public class ToDoItemConfiguration : IEntityTypeConfiguration<ToDoItem>
       .HasVogenConversion()
       .IsRequired();
     builder.Property(t => t.Title)
-        .IsRequired();
+      .IsRequired();
     builder.Property(t => t.ContributorId)
-        .IsRequired(false);
+      .IsRequired(false);
     builder.Property(t => t.Priority)
       .HasConversion(
-          p => p.Value,
-          p => Priority.FromValue(p));
+        p => p.Value,
+        p => Priority.FromValue(p));
   }
 }

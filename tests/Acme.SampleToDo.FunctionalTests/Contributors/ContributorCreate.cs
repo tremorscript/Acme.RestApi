@@ -17,11 +17,11 @@ public class ContributorCreate : IClassFixture<CustomWebApplicationFactory<Progr
   public async Task ReturnsOneContributor()
   {
     var testName = Guid.NewGuid().ToString();
-    var request = new CreateContributorRequest() { Name = testName };
+    var request = new CreateContributorRequest { Name = testName };
     var content = StringContentHelpers.FromModelAsJson(request);
 
     var result = await _client.PostAndDeserializeAsync<CreateContributorResponse>(
-        CreateContributorRequest.Route, content);
+      CreateContributorRequest.Route, content);
 
     result.Name.ShouldBe(testName);
     result.Id.ShouldBeGreaterThan(0);

@@ -2,7 +2,7 @@
 
 namespace Acme.SampleToDo.Infrastructure.Data.Config;
 
-public class ContributorConfiguration  : IEntityTypeConfiguration<Contributor>
+public class ContributorConfiguration : IEntityTypeConfiguration<Contributor>
 {
   public void Configure(EntityTypeBuilder<Contributor> builder)
   {
